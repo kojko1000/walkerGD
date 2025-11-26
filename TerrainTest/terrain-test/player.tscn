@@ -9,14 +9,20 @@
 [node name="Node3D" type="Node3D"]
 
 [node name="CharacterBody3D" type="CharacterBody3D" parent="."]
+collision_layer = 3
+collision_mask = 3
 script = ExtResource("1_4flbx")
 
 [node name="Camera3D" type="Camera3D" parent="CharacterBody3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.81801164, 0)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="CharacterBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.21473244, 0)
 shape = SubResource("CapsuleShape3D_sh265")
 
 [node name="CSGMesh3D" type="CSGMesh3D" parent="CharacterBody3D"]
 transform = Transform3D(0.88521713, 0, 0, 0, 1.669585, 0, 0, 0, 0.3, 0, 0.03693515, 0.21901006)
 mesh = SubResource("BoxMesh_4flbx")
+
+[node name="RayCast3D" type="RayCast3D" parent="CharacterBody3D"]
+transform = Transform3D(1, 0, 0, 0, -2.8945456e-08, -1, 0, 0.66219485, -4.371139e-08, 0, -1, 0)

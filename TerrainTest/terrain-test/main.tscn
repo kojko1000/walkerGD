@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://hhra8ogdynsd"]
+[gd_scene load_steps=17 format=3 uid="uid://hhra8ogdynsd"]
 
 [ext_resource type="Script" uid="uid://c1hxmibyhitkc" path="res://main.gd" id="1_4c57u"]
 [ext_resource type="Script" uid="uid://ddslmkuu115hv" path="res://addons/zylann.hterrain/hterrain.gd" id="1_lquwl"]
@@ -10,6 +10,7 @@
 [ext_resource type="Texture2D" uid="uid://cdcnb1nu0e61d" path="res://dataTerrain/трава.png" id="5_7mycd"]
 [ext_resource type="Texture2D" uid="uid://6jmdwj3vn6m0" path="res://addons/zylann.hterrain/tools/icons/icon_detail_layer_node.svg" id="5_kek77"]
 [ext_resource type="PackedScene" uid="uid://c23puo8wabq6j" path="res://player.tscn" id="7_272bh"]
+[ext_resource type="PackedScene" uid="uid://drqsijc762t33" path="res://tower.tscn" id="11_efxa6"]
 
 [sub_resource type="Resource" id="Resource_4c57u"]
 script = ExtResource("3_272bh")
@@ -85,7 +86,8 @@ transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 5, 0)
 environment = SubResource("Environment_5vw27")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="WorldEnvironment"]
-transform = Transform3D(1, 0, 0, 0, 0.611527, 0.7912235, 0, -0.7912235, 0.611527, 0, 131, 0)
+transform = Transform3D(1, 0, 0, 0, 0.97667223, 0.21473545, 0, -0.21473545, 0.97667223, 0, 131, 0)
+light_energy = 3.071
 shadow_enabled = true
 
 [node name="Timer" type="Timer" parent="WorldEnvironment/DirectionalLight3D"]
@@ -95,5 +97,8 @@ one_shot = true
 [node name="CSGMesh3D" type="CSGMesh3D" parent="WorldEnvironment"]
 transform = Transform3D(1.55093, 0.06785455, 0.3661104, 0, 1.5682917, -0.29066566, -0.3723454, 0.28263456, 1.5249596, -2.7842937, 1.419615, 0)
 mesh = SubResource("BoxMesh_kek77")
+
+[node name="tower" parent="." instance=ExtResource("11_efxa6")]
+transform = Transform3D(-0.70710677, 0, 0.70710677, 0, 1, 0, -0.70710677, 0, -0.70710677, -14, 0.9374771, -13)
 
 [connection signal="timeout" from="WorldEnvironment/DirectionalLight3D/Timer" to="." method="_on_timer_timeout"]

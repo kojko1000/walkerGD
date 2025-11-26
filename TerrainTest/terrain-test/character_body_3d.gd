@@ -1,5 +1,7 @@
 extends CharacterBody3D
 
+
+
 # Настройки движения
 @export var walk_speed = 5.0
 @export var sprint_speed = 8.0
@@ -8,6 +10,9 @@ extends CharacterBody3D
 
 # Настройки мыши
 @export var mouse_sensitivity = 0.002
+
+# Ограничения поворота камеры
+@export var vertical_angle_limit = 89.0 # градусов
 
 # Наклон камеры
 @export var tilt_intensity = 0.1
@@ -32,8 +37,14 @@ var base_camera_y = 0.0
 # наклон от мыши
 var mouse_input_tilt = 0.0 
 
+# Угол поворота камеры по вертикали
+var camera_vertical_angle = 0.0
+
 @onready var camera = $Camera3D
 @onready var collision_shape = $CollisionShape3D
+
+#лестница
+@onready var ray = $RayCast3D
 
 func _ready():
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
@@ -112,11 +123,22 @@ func uncrouch():
 
 func _input(event):
 	if event is InputEventMouseMotion and Input.get_mouse_mode() == Input.MOUSE_MODE_CAPTURED:
+		# Поворот по горизонтали
 		rotate_y(-event.relative.x * mouse_sensitivity)
 		
-		camera.rotate_x(-event.relative.y * mouse_sensitivity)
-		camera.rotation.x = clamp(camera.rotation.x, -1.2, 1.2)
+		# Поворот по вертикали с ограничением
+		var vertical_rotation = -event.relative.y * mouse_sensitivity
+		camera_vertical_angle += vertical_rotation
 		
+		# Ограничиваем угол поворота по вертикали
+		camera_vertical_angle = clamp(camera_vertical_angle, 
+			deg_to_rad(-vertical_angle_limit), 
+			deg_to_rad(vertical_angle_limit))
+		
+		# Применяем поворот по вертикали
+		camera.rotation.x = camera_vertical_angle
+		
+		# Наклон от движения мыши
 		mouse_input_tilt += -event.relative.x * tilt_intensity * 0.05
 		mouse_input_tilt = clamp(mouse_input_tilt, -0.3, 0.3)
 	
