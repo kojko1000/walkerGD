@@ -1,0 +1,99 @@
+[gd_scene load_steps=16 format=3 uid="uid://hhra8ogdynsd"]
+
+[ext_resource type="Script" uid="uid://c1hxmibyhitkc" path="res://main.gd" id="1_4c57u"]
+[ext_resource type="Script" uid="uid://ddslmkuu115hv" path="res://addons/zylann.hterrain/hterrain.gd" id="1_lquwl"]
+[ext_resource type="Resource" uid="uid://b5tttfpbnjnwb" path="res://dataTerrain/data.hterrain" id="2_7mycd"]
+[ext_resource type="Script" uid="uid://b8f20mpv1caug" path="res://addons/zylann.hterrain/hterrain_texture_set.gd" id="3_272bh"]
+[ext_resource type="Texture2D" uid="uid://nfiyfwmhbu5k" path="res://текстуры/трава_текстура512.png" id="4_4c57u"]
+[ext_resource type="Script" uid="uid://i1eed0vg33rc" path="res://addons/zylann.hterrain/hterrain_detail_layer.gd" id="4_5vw27"]
+[ext_resource type="Texture2D" uid="uid://bolyk4umm5tyn" path="res://текстуры/камень_текстура512.png" id="4_kek77"]
+[ext_resource type="Texture2D" uid="uid://cdcnb1nu0e61d" path="res://dataTerrain/трава.png" id="5_7mycd"]
+[ext_resource type="Texture2D" uid="uid://6jmdwj3vn6m0" path="res://addons/zylann.hterrain/tools/icons/icon_detail_layer_node.svg" id="5_kek77"]
+[ext_resource type="PackedScene" uid="uid://c23puo8wabq6j" path="res://player.tscn" id="7_272bh"]
+
+[sub_resource type="Resource" id="Resource_4c57u"]
+script = ExtResource("3_272bh")
+mode = 0
+textures = [[ExtResource("4_4c57u"), ExtResource("4_kek77")], [null, null]]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_272bh"]
+sky_top_color = Color(0.7505261, 0.6052527, 0.89977545, 1)
+sky_horizon_color = Color(0.49183816, 0.40930244, 0.57981366, 1)
+sky_curve = 0.24367575
+sky_energy_multiplier = 1.5
+sun_angle_max = 12.22
+sun_curve = 3.0589461
+
+[sub_resource type="Sky" id="Sky_272bh"]
+sky_material = SubResource("ProceduralSkyMaterial_272bh")
+
+[sub_resource type="Environment" id="Environment_5vw27"]
+background_mode = 2
+sky = SubResource("Sky_272bh")
+ambient_light_color = Color(0.6167372, 0.3737089, 0.7606553, 1)
+ambient_light_sky_contribution = 0.0
+reflected_light_source = 2
+fog_density = 0.0416
+fog_aerial_perspective = 0.495
+fog_sky_affect = 0.253
+fog_height = 194.02
+fog_height_density = 0.001
+volumetric_fog_density = 0.1026
+
+[sub_resource type="BoxMesh" id="BoxMesh_kek77"]
+
+[node name="Node3D" type="Node3D"]
+script = ExtResource("1_4c57u")
+
+[node name="HTerrain" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -250, 1, -250)
+script = ExtResource("1_lquwl")
+ambient_wind = 0.095
+_terrain_data = ExtResource("2_7mycd")
+chunk_size = 32
+collision_enabled = true
+collision_layer = 1
+collision_mask = 1
+shader_type = "Classic4Lite"
+custom_shader = null
+custom_globalmap_shader = null
+texture_set = SubResource("Resource_4c57u")
+render_layers = 1
+cast_shadow = 1
+shader_params/u_ground_uv_scale = 20
+shader_params/u_depth_blending = true
+shader_params/u_triplanar = null
+shader_params/u_tile_reduction = null
+metadata/_custom_type_script = "uid://ddslmkuu115hv"
+
+[node name="HTerrainDetailLayer" type="Node3D" parent="HTerrain"]
+script = ExtResource("4_5vw27")
+texture = ExtResource("5_7mycd")
+view_distance = 67.954
+density = 10.0
+shader_params/u_globalmap_tint_bottom = null
+shader_params/u_globalmap_tint_top = null
+shader_params/u_bottom_ao = null
+shader_params/u_instance_scale = null
+shader_params/u_roughness = null
+metadata/_editor_icon = ExtResource("5_kek77")
+
+[node name="Node3D" parent="." instance=ExtResource("7_272bh")]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 5, 0)
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_5vw27")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="WorldEnvironment"]
+transform = Transform3D(1, 0, 0, 0, 0.611527, 0.7912235, 0, -0.7912235, 0.611527, 0, 131, 0)
+shadow_enabled = true
+
+[node name="Timer" type="Timer" parent="WorldEnvironment/DirectionalLight3D"]
+wait_time = 0.05
+one_shot = true
+
+[node name="CSGMesh3D" type="CSGMesh3D" parent="WorldEnvironment"]
+transform = Transform3D(1.55093, 0.06785455, 0.3661104, 0, 1.5682917, -0.29066566, -0.3723454, 0.28263456, 1.5249596, -2.7842937, 1.419615, 0)
+mesh = SubResource("BoxMesh_kek77")
+
+[connection signal="timeout" from="WorldEnvironment/DirectionalLight3D/Timer" to="." method="_on_timer_timeout"]
