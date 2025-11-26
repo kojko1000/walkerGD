@@ -31,7 +31,7 @@ sky_material = SubResource("ProceduralSkyMaterial_272bh")
 [sub_resource type="Environment" id="Environment_5vw27"]
 background_mode = 2
 sky = SubResource("Sky_272bh")
-ambient_light_color = Color(0.6167372, 0.3737089, 0.7606553, 1)
+ambient_light_color = Color(0.6513582, 0.41345006, 0.79562026, 1)
 ambient_light_sky_contribution = 0.0
 reflected_light_source = 2
 fog_density = 0.0416
@@ -86,8 +86,7 @@ transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 5, 0)
 environment = SubResource("Environment_5vw27")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="WorldEnvironment"]
-transform = Transform3D(1, 0, 0, 0, 0.97667223, 0.21473545, 0, -0.21473545, 0.97667223, 0, 131, 0)
-light_energy = 3.071
+transform = Transform3D(1, 0, 0, 0, 0.8300122, 0.55774504, 0, -0.55774504, 0.8300122, 0, 131, 0)
 shadow_enabled = true
 
 [node name="Timer" type="Timer" parent="WorldEnvironment/DirectionalLight3D"]
@@ -99,6 +98,6 @@ transform = Transform3D(1.55093, 0.06785455, 0.3661104, 0, 1.5682917, -0.2906656
 mesh = SubResource("BoxMesh_kek77")
 
 [node name="tower" parent="." instance=ExtResource("11_efxa6")]
-transform = Transform3D(-0.70710677, 0, 0.70710677, 0, 1, 0, -0.70710677, 0, -0.70710677, -14, 0.9374771, -13)
+transform = Transform3D(0.94535387, 0.31236994, 0.09343913, -0.3137865, 0.94949347, 0.00049366546, -0.08856562, -0.029786646, 0.9956248, 49.577103, -4.0950456, 10.959768)
 
 [connection signal="timeout" from="WorldEnvironment/DirectionalLight3D/Timer" to="." method="_on_timer_timeout"]
