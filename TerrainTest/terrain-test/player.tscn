@@ -16,6 +16,14 @@ script = ExtResource("1_4flbx")
 [node name="Camera3D" type="Camera3D" parent="CharacterBody3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.81801164, 0)
 
+[node name="SpotLight3D" type="SpotLight3D" parent="CharacterBody3D/Camera3D"]
+visible = false
+light_color = Color(1, 1, 0, 1)
+light_energy = 16.0
+shadow_enabled = true
+spot_range = 27.580147
+spot_angle = 20.785738
+
 [node name="CollisionShape3D" type="CollisionShape3D" parent="CharacterBody3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.21473244, 0)
 shape = SubResource("CapsuleShape3D_sh265")
