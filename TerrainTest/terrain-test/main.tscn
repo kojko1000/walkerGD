@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://hhra8ogdynsd"]
+[gd_scene load_steps=24 format=3 uid="uid://hhra8ogdynsd"]
 
 [ext_resource type="Script" uid="uid://c1hxmibyhitkc" path="res://main.gd" id="1_4c57u"]
 [ext_resource type="Script" uid="uid://ddslmkuu115hv" path="res://addons/zylann.hterrain/hterrain.gd" id="1_lquwl"]
@@ -11,6 +11,13 @@
 [ext_resource type="Texture2D" uid="uid://6jmdwj3vn6m0" path="res://addons/zylann.hterrain/tools/icons/icon_detail_layer_node.svg" id="5_kek77"]
 [ext_resource type="PackedScene" uid="uid://c23puo8wabq6j" path="res://player.tscn" id="7_272bh"]
 [ext_resource type="PackedScene" uid="uid://drqsijc762t33" path="res://tower.tscn" id="11_efxa6"]
+[ext_resource type="PackedScene" uid="uid://8yc7w32akyrg" path="res://TREES/Булыги1.glb" id="12_dg77c"]
+[ext_resource type="PackedScene" uid="uid://c6qjxfk0vqa63" path="res://TREES/Булыги2.glb" id="13_yaehf"]
+[ext_resource type="PackedScene" uid="uid://d1ic8gnhp1yfx" path="res://TREES/Булыги3.glb" id="14_074og"]
+[ext_resource type="PackedScene" uid="uid://d4bbxs6uoy22l" path="res://TREES/замшелыеБулыги1.glb" id="15_cegan"]
+[ext_resource type="PackedScene" uid="uid://b6w21c0i4lgrg" path="res://TREES/замшелыеБулыги2.glb" id="16_82xsv"]
+[ext_resource type="PackedScene" uid="uid://dhonbb53fm7r3" path="res://TREES/замшелыеБулыги3.glb" id="17_getpj"]
+[ext_resource type="PackedScene" uid="uid://dsmtcwksyb3ir" path="res://TREES/куст_1.tscn" id="18_074og"]
 
 [sub_resource type="Resource" id="Resource_4c57u"]
 script = ExtResource("3_272bh")
@@ -97,7 +104,51 @@ one_shot = true
 transform = Transform3D(1.55093, 0.06785455, 0.3661104, 0, 1.5682917, -0.29066566, -0.3723454, 0.28263456, 1.5249596, -2.7842937, 1.419615, 0)
 mesh = SubResource("BoxMesh_kek77")
 
-[node name="tower" parent="." instance=ExtResource("11_efxa6")]
+[node name="объекты" type="Node3D" parent="."]
+
+[node name="Булыги1" parent="объекты" instance=ExtResource("12_dg77c")]
+transform = Transform3D(0.75489277, 0, 0.65584826, 0, 1, 0, -0.65584826, 0, 0.75489277, 34.70781, 1.5279694, 25.103882)
+
+[node name="Булыги2" parent="объекты" instance=ExtResource("13_yaehf")]
+transform = Transform3D(0.288096, 0, -0.95760155, 0, 1, 0, 0.95760155, 0, 0.288096, 46.92459, 1.1743922, 11.985674)
+
+[node name="Булыги3" parent="объекты" instance=ExtResource("14_074og")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 52.923286, 0.59140897, 6.5886483)
+
+[node name="замшелыеБулыги1" parent="объекты" instance=ExtResource("15_cegan")]
+transform = Transform3D(-0.12616436, 0, -0.99200934, 0, 1, 0, 0.99200934, 0, -0.12616436, 4.8867044, 1.2209468, 27.692627)
+
+[node name="замшелыеБулыги2" parent="объекты" instance=ExtResource("16_82xsv")]
+transform = Transform3D(-0.65924084, 0, 0.75193185, 0, 1, 0, -0.75193185, 0, -0.65924084, 5.694407, 1.5751004, 22.809378)
+
+[node name="замшелыеБулыги3" parent="объекты" instance=ExtResource("17_getpj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.962407, 0.48362565, 19.541954)
+
+[node name="замшелыеБулыги4" parent="объекты" instance=ExtResource("17_getpj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.268008, 0.6574149, 8.7857065)
+
+[node name="замшелыеБулыги5" parent="объекты" instance=ExtResource("16_82xsv")]
+transform = Transform3D(0.5432037, 0, 0.8396009, 0, 1, 0, -0.8396009, 0, 0.5432037, 17.274605, 1.1587996, 23.744709)
+
+[node name="замшелыеБулыги6" parent="объекты" instance=ExtResource("17_getpj")]
+transform = Transform3D(0.4082189, 0, -0.91288406, 0, 1, 0, 0.91288406, 0, 0.4082189, 24.828976, -0.42373872, 18.211443)
+
+[node name="Булыги4" parent="объекты" instance=ExtResource("12_dg77c")]
+transform = Transform3D(1, 0, 0, 0, 0.9662683, 0.25753754, 0, -0.25753754, 0.9662683, -7.524389, 0.9724097, -13.704138)
+
+[node name="Булыги5" parent="объекты" instance=ExtResource("14_074og")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.032518268, 1.948668, -10.482516)
+
+[node name="tower" parent="объекты" instance=ExtResource("11_efxa6")]
 transform = Transform3D(0.94535387, 0.31236994, 0.09343913, -0.3137865, 0.94949347, 0.00049366546, -0.08856562, -0.029786646, 0.9956248, 49.577103, -4.0950456, 10.959768)
+
+[node name="замшелыеБулыги2" parent="." instance=ExtResource("16_82xsv")]
+transform = Transform3D(0.9135454, 0, 0.40673664, 0, 1, 0, -0.40673664, 0, 0.9135454, 13.564803, 1.1205621, 5.502095)
+
+[node name="замшелыеБулыги1" parent="." instance=ExtResource("15_cegan")]
+transform = Transform3D(0.6749316, -0.348388, 0.65045613, 0.45868057, 0.88860124, 0, -0.57799613, 0.2983516, 0.75954384, 5.2748256, 1.6320953, 5.3941045)
+
+[node name="куст1" parent="." instance=ExtResource("18_074og")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 8.828251, 7.4237585, 4.1958084)
 
 [connection signal="timeout" from="WorldEnvironment/DirectionalLight3D/Timer" to="." method="_on_timer_timeout"]

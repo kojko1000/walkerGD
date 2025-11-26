@@ -1,0 +1,5 @@
+[gd_scene load_steps=2 format=3 uid="uid://qb7hnh5qp2t3"]
+
+[ext_resource type="PackedScene" uid="uid://4sbp73fby72t" path="res://TREES/Coniferous Forest Assets Pack.glb" id="1_5axgv"]
+
+[node name="Coniferous Forest Assets Pack" instance=ExtResource("1_5axgv")]

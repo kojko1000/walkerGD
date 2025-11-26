@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://dsmtcwksyb3ir"]
+
+[ext_resource type="PackedScene" uid="uid://bg27bfkth6oct" path="res://TREES/куст1.glb" id="1_21mfa"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_finxs"]
+size = Vector3(0.1760788, 6.70459, 0.18682861)
+
+[node name="куст1" instance=ExtResource("1_21mfa")]
+
+[node name="StaticBody3D" type="StaticBody3D" parent="NobleFirTree" index="0"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="NobleFirTree/StaticBody3D" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0024909973, 3.3476596, 0.0018005371)
+shape = SubResource("BoxShape3D_finxs")
