@@ -47,12 +47,15 @@ sky = SubResource("Sky_272bh")
 ambient_light_color = Color(0.6513582, 0.41345006, 0.79562026, 1)
 ambient_light_sky_contribution = 0.0
 reflected_light_source = 2
+glow_enabled = true
 fog_density = 0.0416
 fog_aerial_perspective = 0.495
 fog_sky_affect = 0.253
 fog_height = 194.02
 fog_height_density = 0.001
-volumetric_fog_density = 0.1026
+volumetric_fog_enabled = true
+volumetric_fog_density = 0.0
+volumetric_fog_emission = Color(0.25011674, 0.22300962, 0.5156399, 1)
 
 [sub_resource type="BoxMesh" id="BoxMesh_kek77"]
 
@@ -113,11 +116,13 @@ transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 5, 0)
 environment = SubResource("Environment_5vw27")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="WorldEnvironment"]
-transform = Transform3D(1, 0, 0, 0, 0.98768824, 0.15643446, 0, -0.15643446, 0.98768824, 0, 131, 0)
+transform = Transform3D(1, 0, 0, 0, -0.10279255, 0.9947027, 0, -0.9947027, -0.10279255, 0, 131, 0)
 
 [node name="Timer" type="Timer" parent="WorldEnvironment/DirectionalLight3D"]
 wait_time = 0.05
 one_shot = true
+
+[node name="fogChanceTimer" type="Timer" parent="WorldEnvironment/DirectionalLight3D"]
 
 [node name="CSGMesh3D" type="CSGMesh3D" parent="WorldEnvironment"]
 transform = Transform3D(1.55093, 0.06785455, 0.3661104, 0, 1.5682917, -0.29066566, -0.3723454, 0.28263456, 1.5249596, -2.7842937, 1.419615, 0)
@@ -151,6 +156,9 @@ transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, 64.52568, -5.1991816, -11.
 
 [node name="Булыги4" parent="камни" instance=ExtResource("23_d13ii")]
 transform = Transform3D(5.3808627, 0, 9.594077, 0, 11, 0, -9.594077, 0, 5.3808627, 94.91466, 0.64205337, -18.268723)
+
+[node name="замшелыеБулыги6" parent="камни" instance=ExtResource("13_vivmo")]
+transform = Transform3D(2.4990826, -1.5333502e-08, -1.6596944, 0.58064026, 2.8104196, 0.8742982, 1.5548128, -1.049543, 2.341157, 66.03404, 9.245611, 69.54846)
 
 [node name="растительность" type="Node3D" parent="."]
 
@@ -265,145 +273,143 @@ transform = Transform3D(1.7747625, 0, 0.92207265, 0, 2, 0, -0.92207265, 0, 1.774
 [node name="СОСНА8" parent="растительность" instance=ExtResource("17_cegan")]
 transform = Transform3D(1.5903744, 0.03782689, 0.5993987, -0.03539636, 1.6995791, -0.013340589, -0.59954715, 0, 1.5907682, -93.95541, 1.5287361, -62.44407)
 
-[node name="СОСНА1" parent="." instance=ExtResource("17_cegan")]
+[node name="СОСНА17" parent="растительность" instance=ExtResource("17_cegan")]
 transform = Transform3D(1.9625821, 0.1391304, 0.35904682, -0.14142808, 1.9949934, 0, -0.35814795, -0.025389647, 1.9675074, 81.446686, -0.051502466, 28.975245)
 
-[node name="СОСНА2" parent="." instance=ExtResource("16_074og")]
+[node name="СОСНА18" parent="растительность" instance=ExtResource("16_074og")]
 transform = Transform3D(2, 0, 0, 0, 1.9841636, 0.25118592, 0, -0.25118592, 1.9841636, 70.0093, -1.1734428, 41.668514)
 
-[node name="саженец" parent="." instance=ExtResource("18_82xsv")]
+[node name="саженец6" parent="растительность" instance=ExtResource("18_82xsv")]
 transform = Transform3D(2.8977776, 0, 0.77645713, 0, 3, 0, -0.77645713, 0, 2.8977776, 65, 2, 49)
 
-[node name="саженец2" parent="." instance=ExtResource("18_82xsv")]
+[node name="саженец7" parent="растительность" instance=ExtResource("18_82xsv")]
 transform = Transform3D(3.7305193, 0, 3.329148, -0.4792032, 4.947931, 0.5369773, -3.294479, -0.7197085, 3.6916704, 79.743904, -0.555243, 38.457005)
 
-[node name="куст2" parent="." instance=ExtResource("20_ryguw")]
+[node name="куст9" parent="растительность" instance=ExtResource("20_ryguw")]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 77.582405, 2.3942966, 48.15483)
 
-[node name="куст3" parent="." instance=ExtResource("20_ryguw")]
+[node name="куст10" parent="растительность" instance=ExtResource("20_ryguw")]
 transform = Transform3D(1.7348192, 0, 0.9951896, 0, 2, 0, -0.9951896, 0, 1.7348192, 63.377544, 5.6100054, 79.04724)
 
-[node name="СОСНА3" parent="." instance=ExtResource("17_cegan")]
+[node name="СОСНА19" parent="растительность" instance=ExtResource("17_cegan")]
 transform = Transform3D(1.9971166, -0.10735594, 0, 0.10735594, 1.9971166, 0, 0, 0, 2, 54.006554, 6.796931, 80.035675)
 
-[node name="СОСНА4" parent="." instance=ExtResource("16_074og")]
+[node name="СОСНА20" parent="растительность" instance=ExtResource("16_074og")]
 transform = Transform3D(1.8957927, -0.061301302, 0.6342019, 0, 1.9907221, 0.19242115, -0.6371576, -0.18239531, 1.8869982, 66.33096, 8.840038, 94.10085)
 
-[node name="СОСНА5" parent="." instance=ExtResource("17_cegan")]
+[node name="СОСНА21" parent="растительность" instance=ExtResource("17_cegan")]
 transform = Transform3D(1.7986426, 0, -0.87457687, 0, 2, 0, 0.87457687, 0, 1.7986426, 98.42122, 6.116358, 70.777435)
 
-[node name="куст1" parent="." instance=ExtResource("18_074og")]
+[node name="куст11" parent="растительность" instance=ExtResource("18_074og")]
 transform = Transform3D(2, 0, 0, 0, 1.9694699, 0.34812137, 0, -0.34812137, 1.9694699, 96.08757, 9.247091, 78.5572)
 
-[node name="куст4" parent="." instance=ExtResource("20_ryguw")]
+[node name="куст12" parent="растительность" instance=ExtResource("20_ryguw")]
 transform = Transform3D(0.41916877, 0, 1.9555811, 0, 2, 0, -1.9555811, 0, 0.41916877, 77.28668, 11.673783, 96.01254)
 
-[node name="куст5" parent="." instance=ExtResource("20_ryguw")]
+[node name="куст13" parent="растительность" instance=ExtResource("20_ryguw")]
 transform = Transform3D(1.9612635, 0.39059427, 0.029691169, -0.39172113, 1.9556216, 0.1486573, 0, -0.1515934, 1.9942466, 86.71405, 7.4588523, 85.940186)
 
-[node name="куст6" parent="." instance=ExtResource("18_074og")]
-transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 71.725685, 8.207029, 75.11256)
-
-[node name="замшелыеБулыги2" parent="." instance=ExtResource("13_vivmo")]
-transform = Transform3D(2.4990826, -1.5333502e-08, -1.6596944, 0.58064026, 2.8104196, 0.8742982, 1.5548128, -1.049543, 2.341157, 66.03404, 9.245611, 69.54846)
-
-[node name="куст7" parent="." instance=ExtResource("20_ryguw")]
+[node name="куст15" parent="растительность" instance=ExtResource("20_ryguw")]
 transform = Transform3D(2, 0, 0, 0, 1.9774344, 0.2995884, 0, -0.2995884, 1.9774344, 98.66212, 2.0526667, 58.14476)
 
-[node name="СОСНА6" parent="." instance=ExtResource("17_cegan")]
+[node name="СОСНА22" parent="растительность" instance=ExtResource("17_cegan")]
 transform = Transform3D(2.4833617, 0, 0.28794968, 0, 2.5, 0, -0.28794968, 0, 2.4833617, 113.21824, 4.586697, 45.26161)
 
-[node name="куст8" parent="." instance=ExtResource("18_074og")]
+[node name="куст16" parent="растительность" instance=ExtResource("18_074og")]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 115.64872, 4.2877245, 52.91435)
 
-[node name="СОСНА7" parent="." instance=ExtResource("16_074og")]
+[node name="СОСНА23" parent="растительность" instance=ExtResource("16_074og")]
 transform = Transform3D(3, 0, 0, 0, 2.9994452, 0.057697028, 0, -0.057697028, 2.9994452, -39.5596, 0.4272504, -78.24786)
 
-[node name="СОСНА8" parent="." instance=ExtResource("17_cegan")]
+[node name="СОСНА24" parent="растительность" instance=ExtResource("17_cegan")]
 transform = Transform3D(1.7377816, 0, 0.9900076, 0, 2, 0, -0.9900076, 0, 1.7377816, -21.397858, -1.8891592, -67.69263)
 
-[node name="СОСНА9" parent="." instance=ExtResource("16_074og")]
+[node name="СОСНА25" parent="растительность" instance=ExtResource("16_074og")]
 transform = Transform3D(1.8990153, 0, 0.6274878, 0, 2, 0, -0.6274878, 0, 1.8990153, -10.9158325, -1.8379307, -79.427704)
 
-[node name="куст9" parent="." instance=ExtResource("18_074og")]
+[node name="куст17" parent="растительность" instance=ExtResource("18_074og")]
 transform = Transform3D(1.6958002, 0, 1.0603122, 0, 2, 0, -1.0603122, 0, 1.6958002, -34.51956, -0.23427677, -83.80595)
 
-[node name="куст10" parent="." instance=ExtResource("20_ryguw")]
+[node name="куст18" parent="растительность" instance=ExtResource("20_ryguw")]
 transform = Transform3D(1.6725149, -0.033146422, 1.096173, 0, 1.9990863, 0.060448997, -1.0966741, -0.050550923, 1.6717508, -21.332153, -0.114501595, -81.59726)
 
-[node name="СОСНА10" parent="." instance=ExtResource("17_cegan")]
+[node name="СОСНА26" parent="растительность" instance=ExtResource("17_cegan")]
 transform = Transform3D(1.9990317, -0.062228397, 0, 0.062228397, 1.9990317, 0, 0, 0, 2, -6.4261475, -2.2583256, -132.93283)
 
-[node name="СОСНА11" parent="." instance=ExtResource("16_074og")]
+[node name="СОСНА27" parent="растительность" instance=ExtResource("16_074og")]
 transform = Transform3D(1.0444614, 0, -1.7056086, 0, 2, 0, 1.7056086, 0, 1.0444614, -28.364594, -2.2583256, -153.34055)
 
-[node name="СОСНА12" parent="." instance=ExtResource("17_cegan")]
+[node name="СОСНА28" parent="растительность" instance=ExtResource("17_cegan")]
 transform = Transform3D(1.9025656, 0, 0.6166395, 0, 2, 0, -0.6166395, 0, 1.9025656, -57.172028, -2.2583218, -150.81467)
 
-[node name="СОСНА13" parent="." instance=ExtResource("16_074og")]
+[node name="СОСНА29" parent="растительность" instance=ExtResource("16_074og")]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -85.375336, -2.2583265, -168.03458)
 
-[node name="СОСНА14" parent="." instance=ExtResource("16_074og")]
+[node name="СОСНА30" parent="растительность" instance=ExtResource("16_074og")]
 transform = Transform3D(1.9615774, 0, 0.3901464, -0.023240129, 1.9964485, 0.11684668, -0.38945362, -0.119135424, 1.9580941, -89.59036, -2.2583275, -77.08911)
 
-[node name="СОСНА15" parent="." instance=ExtResource("17_cegan")]
+[node name="СОСНА31" parent="растительность" instance=ExtResource("17_cegan")]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -78.946014, -2.2583256, -154.8234)
 
-[node name="СОСНА16" parent="." instance=ExtResource("16_074og")]
+[node name="СОСНА32" parent="растительность" instance=ExtResource("16_074og")]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -40.714447, -2.2583256, -168.55695)
 
-[node name="мертвое_дерево1" parent="." instance=ExtResource("21_d13ii")]
+[node name="мертвое_дерево9" parent="растительность" instance=ExtResource("21_d13ii")]
 transform = Transform3D(1.9857527, -0.2382983, 0, 0.2382983, 1.9857527, 0, 0, 0, 2, -42.832977, -1.4144554, -150.89966)
 
-[node name="мертвое_дерево2" parent="." instance=ExtResource("22_1u8w0")]
+[node name="мертвое_дерево10" parent="растительность" instance=ExtResource("22_1u8w0")]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -26.025024, -0.38398743, -124.92044)
 
-[node name="куст11" parent="." instance=ExtResource("20_ryguw")]
+[node name="куст19" parent="растительность" instance=ExtResource("20_ryguw")]
 transform = Transform3D(1.9880823, 0, 0.21801133, 0, 2, 0, -0.21801133, 0, 1.9880823, -1.2669983, 0.42850626, -124.50058)
 
-[node name="куст12" parent="." instance=ExtResource("18_074og")]
+[node name="куст20" parent="растительность" instance=ExtResource("18_074og")]
 transform = Transform3D(1.947738, 0, 0.45422053, 0, 2, 0, -0.45422053, 0, 1.947738, 4.0660095, -0.053865433, -109.31799)
 
-[node name="СОСНА17" parent="." instance=ExtResource("17_cegan")]
+[node name="СОСНА33" parent="растительность" instance=ExtResource("17_cegan")]
 transform = Transform3D(1.9593258, 0, 0.40130097, 0, 2, 0, -0.40130097, 0, 1.9593258, -9.264801, -0.5217838, -84.99542)
 
-[node name="СОСНА18" parent="." instance=ExtResource("16_074og")]
+[node name="СОСНА34" parent="растительность" instance=ExtResource("16_074og")]
 transform = Transform3D(1.9562154, 0, -0.41619897, 0, 2, 0, 0.41619897, 0, 1.9562154, 0.8295288, -0.4987011, -100.51535)
 
-[node name="СОСНА19" parent="." instance=ExtResource("17_cegan")]
+[node name="СОСНА35" parent="растительность" instance=ExtResource("17_cegan")]
 transform = Transform3D(2.065057, 0, 1.0126891, 0, 2.3, 0, -1.0126891, 0, 2.065057, -1.3891296, -0.5975208, -88.20145)
 
-[node name="СОСНА20" parent="." instance=ExtResource("16_074og")]
+[node name="СОСНА36" parent="растительность" instance=ExtResource("16_074og")]
 transform = Transform3D(2.97124, 0, 0.41440806, 0.024569819, 2.994723, -0.17616172, -0.41367906, 0.17786688, 2.9660134, -35.42685, -1.6883774, -140.8158)
 
-[node name="саженец3" parent="." instance=ExtResource("18_82xsv")]
+[node name="саженец8" parent="растительность" instance=ExtResource("18_82xsv")]
 transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, -48.778656, 0.2692566, -144.41565)
 
-[node name="куст13" parent="." instance=ExtResource("18_074og")]
+[node name="куст21" parent="растительность" instance=ExtResource("18_074og")]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -21.008911, 0.36494637, -110.387146)
 
-[node name="куст14" parent="." instance=ExtResource("20_ryguw")]
+[node name="куст22" parent="растительность" instance=ExtResource("20_ryguw")]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -30.225952, -0.26231062, -132.99414)
 
-[node name="куст15" parent="." instance=ExtResource("20_ryguw")]
+[node name="куст23" parent="растительность" instance=ExtResource("20_ryguw")]
 transform = Transform3D(1.8581489, 0, -0.7397854, 0, 2, 0, 0.7397854, 0, 1.8581489, -11.795746, -0.5250803, -98.91916)
 
-[node name="мертвое_дерево3" parent="." instance=ExtResource("22_1u8w0")]
+[node name="мертвое_дерево11" parent="растительность" instance=ExtResource("22_1u8w0")]
 transform = Transform3D(1.9287921, 0, 0.52892447, 0.1360306, 1.9327252, -0.4960533, -0.51113284, 0.5143668, 1.8639126, -26.335949, -2.2948227, -116.47068)
 
-[node name="мертвое_дерево4" parent="." instance=ExtResource("21_d13ii")]
+[node name="мертвое_дерево12" parent="растительность" instance=ExtResource("21_d13ii")]
 transform = Transform3D(2, 0, 0, 0, 1.9868855, 0.22866061, 0, -0.22866061, 1.9868855, -18.42979, -1.0847588, -121.93713)
 
-[node name="мертвое_дерево5" parent="." instance=ExtResource("22_1u8w0")]
+[node name="мертвое_дерево13" parent="растительность" instance=ExtResource("22_1u8w0")]
 transform = Transform3D(1.9911338, 0.18811236, 0, -0.18811236, 1.9911338, 0, 0, 0, 2, -95.32092, -3.7864838, -53.920044)
 
-[node name="мертвое_дерево6" parent="." instance=ExtResource("21_d13ii")]
+[node name="мертвое_дерево14" parent="растительность" instance=ExtResource("21_d13ii")]
 transform = Transform3D(4, 0, 0, 0, 3.8905365, 0.9293684, 0, -0.9293684, 3.8905365, -64.75098, -1.8609467, -26.401276)
 
-[node name="мертвое_дерево7" parent="." instance=ExtResource("22_1u8w0")]
+[node name="мертвое_дерево15" parent="растительность" instance=ExtResource("22_1u8w0")]
 transform = Transform3D(3.738869, 1.0218568, 0.98826677, -1.0545495, 3.8584878, 0, -0.9533036, -0.26054397, 3.875994, -112.778595, -2.2914104, -45.79602)
 
-[node name="СОСНА21" parent="." instance=ExtResource("16_074og")]
+[node name="СОСНА37" parent="растительность" instance=ExtResource("16_074og")]
 transform = Transform3D(1.9632385, 0, 0.9928216, 0, 2.2, 0, -0.9928216, 0, 1.9632385, -91.592804, -1.1944141, -24.028442)
 
+[node name="куст14" parent="растительность" instance=ExtResource("18_074og")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 71.725685, 8.207029, 75.11256)
+
 [connection signal="timeout" from="WorldEnvironment/DirectionalLight3D/Timer" to="." method="_on_timer_timeout"]
+[connection signal="timeout" from="WorldEnvironment/DirectionalLight3D/fogChanceTimer" to="." method="_on_fog_chance_timer_timeout"]
