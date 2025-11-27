@@ -29,7 +29,7 @@ func _on_timer_timeout() -> void:
 		if sky.environment.ambient_light_energy > 0.25:
 			sky.environment.ambient_light_energy = sky.environment.ambient_light_energy - 0.001
 		#ambient_light_energy
-		print("заходим")
+		#print("заходим")
 	if((rad_to_deg(sun.rotation.x)>168 or rad_to_deg(sun.rotation.x)< 8)): #восход 168
 		if (sun.light_energy < 1):
 			sun.light_energy = sun.light_energy + light_intensity
@@ -38,5 +38,5 @@ func _on_timer_timeout() -> void:
 			sky.environment.background_energy_multiplier =sky.environment.background_energy_multiplier+ 0.001
 		if sky.environment.ambient_light_energy < 1:
 			sky.environment.ambient_light_energy = sky.environment.ambient_light_energy + 0.001
-		print("восходим")
+		#print("восходим")
 	pass # Replace with function body.

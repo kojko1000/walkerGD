@@ -1,0 +1,5 @@
+[gd_scene load_steps=2 format=3 uid="uid://chhy2iu4xma8i"]
+
+[ext_resource type="PackedScene" uid="uid://cno8yds1oohgg" path="res://оружие/меч.glb" id="1_env54"]
+
+[node name="меч" instance=ExtResource("1_env54")]

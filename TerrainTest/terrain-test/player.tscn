@@ -1,6 +1,98 @@
-[gd_scene load_steps=4 format=3 uid="uid://c23puo8wabq6j"]
+[gd_scene load_steps=10 format=3 uid="uid://c23puo8wabq6j"]
 
 [ext_resource type="Script" uid="uid://dslgv8jrs4swc" path="res://character_body_3d.gd" id="1_4flbx"]
+[ext_resource type="Script" uid="uid://bhle06sdijvel" path="res://handMain.gd" id="2_i3pqv"]
+[ext_resource type="PackedScene" uid="uid://chhy2iu4xma8i" path="res://оружие/меч.tscn" id="3_hqtel"]
+
+[sub_resource type="Animation" id="Animation_i3pqv"]
+resource_name = "git it"
+length = 5.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:rotation")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.6179413, 1.2235291, 3.7175179, 5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(0.122400306, 1.1287972, 3.0838785), Vector3(-0.05719187, -0.13655557, 1.2590857), Vector3(-0.7860477, 0.058539756, 1.195806), Vector3(-0.25840098, 0.8005222, -2.1637285), Vector3(0.114511386, -1.1292412, 0.05395678)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:position")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.6179413, 1.2235291, 3.7175179, 5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(-0.77140534, 0.04635793, -0.4963991), Vector3(0.2741866, 0.39650583, -0.4963991), Vector3(0.7171984, 0.3819438, -0.4963991), Vector3(0.40191054, 0.6032042, -0.4963991), Vector3(0.5458553, 0.3127758, -0.4963991)]
+}
+
+[sub_resource type="Animation" id="Animation_hqtel"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0.114511386, -1.1292412, 0.05395678)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0.5458553, 0.3127758, -0.4963991)]
+}
+
+[sub_resource type="Animation" id="Animation_sweqy"]
+resource_name = "walk"
+length = 0.4
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:rotation")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3, 0.4),
+"transitions": PackedFloat32Array(0.3077861, 2.0705302, 0.3077861),
+"update": 0,
+"values": [Vector3(0.114511386, -1.1292412, 0.05395678), Vector3(0.14694475, -1.1199741, 0.12732533), Vector3(0.114511386, -1.1292412, 0.05395678)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:position")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.3, 0.4),
+"transitions": PackedFloat32Array(0.42044818, 2.0705302, 0.42044818),
+"update": 0,
+"values": [Vector3(0.5458553, 0.3127758, -0.4963991), Vector3(0.51521164, 0.29158843, -0.4963991), Vector3(0.5458553, 0.3127758, -0.4963991)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_hqtel"]
+_data = {
+&"RESET": SubResource("Animation_hqtel"),
+&"git it": SubResource("Animation_i3pqv"),
+&"walk": SubResource("Animation_sweqy")
+}
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_sh265"]
 
@@ -23,6 +115,18 @@ light_energy = 16.0
 shadow_enabled = true
 spot_range = 27.580147
 spot_angle = 20.785738
+
+[node name="Node3D" type="Node3D" parent="CharacterBody3D/Camera3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.81801164, 0)
+script = ExtResource("2_i3pqv")
+
+[node name="меч" parent="CharacterBody3D/Camera3D/Node3D" instance=ExtResource("3_hqtel")]
+transform = Transform3D(0.8423057, -0.25239795, -1.7963347, 0.107154794, 1.9840102, -0.22852263, 1.8108118, 2.2351745e-08, 0.84909445, 0.5458553, 0.3127758, -0.4963991)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="CharacterBody3D/Camera3D/Node3D/меч"]
+libraries = {
+&"": SubResource("AnimationLibrary_hqtel")
+}
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="CharacterBody3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.21473244, 0)

@@ -1,0 +1,5 @@
+[gd_scene load_steps=2 format=3 uid="uid://ci76le145pve5"]
+
+[ext_resource type="PackedScene" uid="uid://d1ic8gnhp1yfx" path="res://TREES/Булыги3.glb" id="1_a3mw6"]
+
+[node name="Булыги3" instance=ExtResource("1_a3mw6")]

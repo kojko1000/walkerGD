@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://cjrhb5a5ys4c8"]
+
+[ext_resource type="PackedScene" uid="uid://dsde7jjyxcqfn" path="res://TREES/мертвое_дерево1.glb" id="1_ak41c"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_3acub"]
+size = Vector3(0.35947213, 15.909704, 0.40330508)
+
+[node name="мертвое_дерево1" instance=ExtResource("1_ak41c")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Coniferous Dead Tree" index="0"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Coniferous Dead Tree/StaticBody3D" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0015811175, 7.965805, 0.018114135)
+shape = SubResource("BoxShape3D_3acub")

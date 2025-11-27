@@ -1,0 +1,5 @@
+[gd_scene load_steps=2 format=3 uid="uid://c25cwl60h1pq3"]
+
+[ext_resource type="PackedScene" uid="uid://b6w21c0i4lgrg" path="res://TREES/замшелыеБулыги2.glb" id="1_snt3w"]
+
+[node name="замшелыеБулыги2" instance=ExtResource("1_snt3w")]

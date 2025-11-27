@@ -6,6 +6,7 @@
 size = Vector3(0.1760788, 6.70459, 0.18682861)
 
 [node name="куст1" instance=ExtResource("1_21mfa")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
 
 [node name="StaticBody3D" type="StaticBody3D" parent="NobleFirTree" index="0"]
 

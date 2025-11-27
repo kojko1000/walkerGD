@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://m5kwrqsqdsl4"]
+
+[ext_resource type="PackedScene" uid="uid://d3gsxfjxl8ng0" path="res://TREES/куст2.glb" id="1_2bxxg"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_3acub"]
+size = Vector3(0.25100085, 6.265046, 0.21659803)
+
+[node name="куст2" instance=ExtResource("1_2bxxg")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="ConiferousShrub" index="0"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="ConiferousShrub/StaticBody3D" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0015811175, 3.339115, 0.018114135)
+shape = SubResource("BoxShape3D_3acub")
