@@ -43,8 +43,6 @@ var camera_vertical_angle = 0.0
 @onready var camera = $Camera3D
 @onready var collision_shape = $CollisionShape3D
 
-#лестница
-@onready var ray = $RayCast3D
 
 func _ready():
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
